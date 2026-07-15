@@ -1,0 +1,6 @@
+Orgagnisation des fichichers :
+rc, obj, bin et headers pour
+ranger respectivement
+les fichier source .c, les fichiers objets .o, les fichiers exécutables et
+les fichiers headers .h
+

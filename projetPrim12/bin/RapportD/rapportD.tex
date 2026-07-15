@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{graphicx}
+
+% Encodage et langue (optionnel mais recommandé)
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+
+\begin{document}
+
+\title{Lot D.1 : résolution de probleme d'optimisation}
+\author{Daouda CISSE : innovation,
+Hicham El KHAZROUNI : Experimentation ,
+Nael CHANEGRIH : résultat}
+\date{}
+\maketitle
+
+\section*{Problème à résoudre}
+Maximiser la distance minimale entre une particule et les autres dans un espace 2D
+de taille $h \times w$, après $t$ secondes, en fixant leur vitesse et leur position initiales.
+On note \textit{optimum} cette valeur optimale dans la suite.
+
+\section*{Description de l'innovation}
+Nous faisons les hypothèses suivantes, qui seront justifiées un peu plus loin :
+$n$ est petit, de l’ordre de 5.
+
+On choisit de donner aux particules une vitesse initiale de sorte
+qu’elles soient, à tout instant, uniformément réparties sur un cercle, et qu’à
+$t$ secondes elles se trouvent sur le cercle de rayon $\min(h,w)$.
+
+\section*{Explication des choix, des hypothèses et des inconvénients}
+On fixe une borne :
+
+Dans un espace de surface $h^2$ avec $n$ particules,
+la densité surfacique par particule est $\frac{h^2}{n}$.
+On en déduit que la distance minimale maximale
+entre deux particules ne peut dépasser
+$\sqrt{\frac{h^2}{n}} = \frac{h}{\sqrt{n}}$.
+
+\subsection*{Alternative non choisie}
+Si $n$ est environ égal à $m^2$, on peut construire une grille uniforme de taille $m \times m$
+que l’on agrandit autant que possible. Alors, si $h = w$, on a :
+\[
+(k - 1)\,\textit{optimum} = h
+\]
+d’où une valeur de l’optimum très proche de $\frac{h}{\sqrt{n}}$, c’est-à-dire de la borne.
+
+Cependant, il est très compliqué d’initialiser les particules (en raison des collisions et d’autres facteurs)
+pour obtenir ce résultat. C’est pourquoi nous avons choisi une répartition circulaire plutôt qu’une grille.
+
+\subsection*{Alternative choisie}
+Notre méthode aboutit à des particules réparties sur un cercle de rayon
+\[
+\text{ray} = \frac{\min(h,w)}{2}.
+\]
+La distance minimale maximale entre deux particules est alors
+\[
+\frac{2\pi \cdot \text{ray}}{n} = \frac{\pi \cdot \min(h,w)}{n}.
+\]
+
+Pour $h = w$, on obtient une valeur approximativement égale à $\frac{3h}{n}$,
+ce qui est proche de l’optimum pour des valeurs faibles de $n$.
+
+Cependant, pour des valeurs très grandes de $n$, on s’en éloigne de manière quadratique,
+car le dénominateur est en $n$ et non en $\sqrt{n}$, d’où l’hypothèse que $n$ est faible

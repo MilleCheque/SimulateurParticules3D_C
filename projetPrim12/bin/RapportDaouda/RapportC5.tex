@@ -1,0 +1,129 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+
+\title{Lot C.5}
+\author{Daouda CISSE}
+\date{}
+\maketitle
+
+\section*{Question 1}
+
+\section*{}
+\textit{Dans la suite on confond particule et coordonnée d'une particules}   
+
+\section*{}
+Les $N$ particules voisines (uniformément réparties) sont sur le cercle de rayon $R > 1$ ; 
+la particule test s'éloigne de leur barycentre.
+
+\section*{}
+Soit :
+\[
+p_2 = (a,b), \qquad p_1 = (x,y).
+\]
+
+\section*{}
+Le vecteur allant de $p_2$ à $p_1$ est :
+\[
+\vec{v} = (x-a,\, y-b).
+\]
+
+\section*{}
+On le normalise pour obtenir la vitesse de la particule $p_1$ si elle doit s'éloigner de $p_2$ :
+\[
+\hat{v} = \frac{(x-a,\, y-b)}{\sqrt{(x-a)^2 + (y-b)^2}}.
+\]
+
+\section*{}
+On note $(p_n)_{0 < n \leq N}$ les particules voisines sur le cercle unité.
+On assimile leur barycentre à une particule de coordonné :
+\[
+    p_2 = \frac{1}{N} \sum_{k=1}^{N} p_k
+\]
+
+\section*{}
+On reprend les notations de l'énoncé :
+\[
+    v_1 = \frac{p_1 - p_2}{\|p_1 - p_2\|}
+\]
+
+\section*{Question 2}
+
+On pose $p_1 = (x_0, y_0)$ et $p_k = (x_k, y_k)$ pour $k \in \{1, 2, \dots, N\}$.
+\[
+    v_1 = \frac{(x_0 - \frac{1}{N} \sum_{k=1}^{N} x_k,\, y_0 - \frac{1}{N} \sum_{k=1}^{N} y_k )}{\sqrt{ (x_0 - \frac{1}{N} \sum_{k=1}^{N} x_k)^2 + (y_0 - \frac{1}{N} \sum_{k=1}^{N} y_k)^2}}
+\]
+
+\section*{}
+La position de la $k$-ième particule est une variable aléatoire
+\[
+X_k \sim \mathcal{U}(\mathbb{S}^1) \quad
+\text{(loi uniforme sur le cercle unité dans $\mathbb{R}^2$)}.
+\]
+
+\section*{}
+On peut lui associer une fonction de densité :
+\[
+f_{X_k}(\theta) = \frac{1}{2\pi}, \quad
+\text{car la position sur le cercle unité peut être donnée de manière unique par un angle } \theta.
+\]
+
+\section*{}
+L'espérance de $v_1$ est alors :
+\[
+\mathbb{E}[v_1] = \mathbb{E}[v_1(X_1, \dots, X_N)]
+                = \int_{(\mathbb{S}^1)^N} v_1(x_1, \dots, x_N) f_{X_1,\dots,X_N}(x_1, \dots, x_N) \, dx_1 \dots dx_N
+\]
+\[
+= \left(\frac{1}{2 \pi}\right)^N \int_{(\mathbb{S}^1)^N} v_1(x_1, \dots, x_N) \, dx_1 \dots dx_N,
+\text{(on suppose que les variables aléatoires sont indépendantes, donc la densité conjointe est le produit de leurs densités).}
+\]
+
+\begin{align*}
+\int_{(\mathbb{S}^1)^N} v_1(x_1, \dots, x_N) \, dx_1 \dots dx_N
+&= 0 \text{?}
+\end{align*}
+
+
+\section*{Espérance de la vitesse si on ne l'a normalise pas}
+
+Les $X_1, \dots, X_N$ sont des variables aléatoires indépendantes, uniformément distribuées sur le cercle unité $\mathbb{S}^1 \subset \mathbb{R}^2$.  
+le barycentre de ces particules est :
+\[
+\bar{X} = \frac{1}{N} \sum_{k=1}^{N} X_k \in \mathbb{R}^2.
+\]
+
+On s'intéresse au vecteur allant du barycentre vers la particule test située à l'origine (centre du cercle) :
+\[
+v = -\bar{X} = - \frac{1}{N} \sum_{k=1}^{N} X_k.
+\]
+
+\subsection*{Preuve que $\mathbb{E}[v] = 0$}
+
+Par linéarité de l'espérance :
+\[
+\mathbb{E}[v] = \mathbb{E}\Big[- \frac{1}{N} \sum_{k=1}^{N} X_k \Big]
+= - \frac{1}{N} \sum_{k=1}^{N} \mathbb{E}[X_k].
+\]
+
+Or chaque $X_k$ est uniformément distribuée sur $\mathbb{S}^1$, qui est **symétrique par rapport à l'origine**.  
+Donc
+\[
+\mathbb{E}[X_k] = 0 \in \mathbb{R}^2, \quad \text{pour tout } k=1,\dots,N.
+\]
+
+En remplaçant, on obtient :
+\[
+\mathbb{E}[v] = - \frac{1}{N} \sum_{k=1}^{N} 0 = 0.
+\]
+
+\noindent
+\textbf{Conclusion :} l'espérance du vecteur non normalisé allant du barycentre vers le centre est nulle :
+\[
+\boxed{\mathbb{E}[v] = 0}.
+\]
+
+\textit{On se persuade facilement que le résultat reste vraie si on normalise v, il suffit de se réstraindre a des vitesse de norme 1, on y a pensait que a la fin T-T}
+\end{document}
